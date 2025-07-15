@@ -5,159 +5,257 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DisasterConnect</title>
   <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      max-width: 900px;
-      margin: 50px auto;
-      padding: 20px;
-      line-height: 1.6;
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+      font-family: "Helvetica Neue", sans-serif;
     }
-    h1 {
-      color: #c9002f;
+    canvas#particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+    }
+    header {
+      background: rgba(201, 0, 47, 0.85);
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3em;
+      letter-spacing: 1px;
+    }
+    header p {
+      margin: 15px 0 0;
+      font-size: 1.3em;
+      color: #ffe5eb;
+    }
+    section {
+      background: rgba(255, 255, 255, 0.95);
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     h2 {
-      color: #444;
-      margin-top: 30px;
+      color: #c9002f;
+      margin-top: 0;
+      font-size: 2em;
+    }
+    img.diagram {
+      max-width: 100%;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
     }
     a {
       color: #c9002f;
       text-decoration: none;
+      font-weight: bold;
     }
     a:hover {
       text-decoration: underline;
     }
-    ul {
+    ul, ol {
       margin-left: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #888;
+      margin: 30px;
     }
   </style>
 </head>
 <body>
-  <h1>DisasterConnect</h1>
+  <canvas id="particles"></canvas>
 
-  <p>
-    Climate disasters are escalating worldwide — more frequent, more intense, and often hitting hardest in communities with the fewest resources. From deadly heatwaves to urban flooding, these crises aren’t just weather events; they’re emergencies that expose and deepen social inequalities. <strong>DisasterConnect</strong> was born to ensure no community is left in the dark when disaster strikes.
-  </p>
+  <header>
+    <h1>DisasterConnect</h1>
+    <p>Not just surviving disasters—but building resilience, dignity, and security for all.<br>For you, for me, and for our communities.</p>
+  </header>
 
-  <h2>🌎Why DisasterConnect Matters</h2>
+  <section>
+    <h2>🌎 Why DisasterConnect Matters</h2>
+    <p>
+      Climate disasters are intensifying worldwide, with devastating impacts reaching from the global scale to daily life. The cruel irony is that those who contribute the least to climate change often suffer its worst consequences. The <a href="https://www.ipcc.ch/report/ar6/syr/" target="_blank">IPCC</a> warns that vulnerable populations disproportionately face losses in health, livelihoods, and safety as climate risks increase.
+    </p>
+    <p>
+      Beyond physical destruction, one of the greatest dangers of disasters is uncertainty—the fear of facing crisis alone, not knowing where to turn, whom to trust, or how to find help. Disasters fracture communities and leave individuals isolated just when support matters most.
+    </p>
+    <p>
+      In Georgia alone, Atlanta now experiences nearly <strong>six more extreme heat days each year</strong> than in the 1960s (<a href="https://www.cakex.org/sites/default/files/documents/Climate%20change%20vulnerability%20assessment%20in%20Georgia.pdf" target="_blank">Climate Vulnerability Assessment in Georgia</a>), while urban flooding events have nearly tripled since the 1980s (<a href="https://www.ncei.noaa.gov/access/billions/" target="_blank">NOAA Billion-Dollar Disasters</a>). Vulnerable communities—low-income, minority, immigrant—bear the brunt of these crises, often lacking access to clear, timely, and actionable information.
+    </p>
+    <p>
+      <strong>DisasterConnect exists to ensure no one faces disaster alone simply because they don’t know who can help.</strong> We aim to replace fear and confusion with clarity, connection, and hope.
+    </p>
+  </section>
 
-  <p>
-    In Georgia and across the U.S., climate risks are rising fast. Atlanta now experiences nearly <strong>six more extreme heat days each year</strong> than in the 1960s, driven by both climate change and urban heat island effects (<a href="https://www.cakex.org/sites/default/files/documents/Climate%20change%20vulnerability%20assessment%20in%20Georgia.pdf" target="_blank">Climate Vulnerability Assessment in Georgia</a>). Heatwaves are lasting longer, increasing by about <strong>2.9 days per decade</strong> since 1961 (<a href="https://www.axios.com/local/atlanta/2024/07/29/metro-atlanta-heat-waves-are-becoming-longer-and-more-frequent" target="_blank">Axios Atlanta</a>).
-  </p>
+  <section>
+    <h2>🎯 Who We Serve</h2>
+    <p>
+      DisasterConnect is built for <strong>any community facing a double burden:</strong> high climate risks and deep social or economic vulnerability. This includes neighborhoods grappling with:
+    </p>
+    <ul>
+      <li>Low income and limited resources to prepare or recover from disasters</li>
+      <li>Language barriers and gaps in digital literacy</li>
+      <li>Historic underinvestment in infrastructure and emergency services</li>
+      <li>Housing and energy insecurity</li>
+    </ul>
+    <p>
+      While our <strong>pilot project begins in Georgia</strong>, DisasterConnect is designed to serve communities worldwide. Our vision is universal resilience—where no one is left behind.
+    </p>
+  </section>
 
-  <p>
-    Urban flooding has surged too. Georgia averaged about <strong>3 billion-dollar disasters per year</strong> between 1980 and 2020, but in the last five years, that number has nearly tripled to almost <strong>10 major events annually</strong> (<a href="https://www.ncei.noaa.gov/access/billions/" target="_blank">NOAA Billion-Dollar Weather Disasters</a>). In metro Atlanta, researchers documented rapid increases in floodplain exposure between 1990 and 2010 (<a href="https://chubasco.niu.edu/pubs/Ferguson%20and%20Ashley%202017%20-%20NH.pdf" target="_blank">Northern Illinois University Study</a>).
-  </p>
+  <section>
+    <h2>🌐 How DisasterConnect Works</h2>
+    <p>
+      DisasterConnect is <strong>not just a list of agencies.</strong> It’s an AI-powered network analysis and mapping platform inspired by tools like <strong>Kumu</strong> and modern GIS systems. Instead of forcing people to sift through dozens of websites and PDFs, DisasterConnect builds a single interactive map revealing:
+    </p>
+    <ul>
+      <li>Which agencies are responsible for specific disaster services</li>
+      <li>How different agencies connect and coordinate</li>
+      <li>Where critical resources like shelters and cooling centers are located</li>
+    </ul>
+    <p>
+      It bridges the gap between complex government data and the real-life questions people ask during emergencies: Who can help me? How do I reach them? What resources are available in my neighborhood?
+    </p>
+  </section>
 
-  <p>
-    The burden of these disasters falls most heavily on communities already struggling: neighborhoods where families live paycheck to paycheck, lack air conditioning, speak limited English, or have low digital literacy. A 2024 report found that heat stress disproportionately affects transit riders in Atlanta, who are predominantly Black and lower-income, highlighting how systemic inequities magnify climate risks.
-  </p>
+  <section>
+    <h2>🔗 Our Data Pipeline</h2>
+    <img src="pipeline-diagram.png" alt="DisasterConnect Data Pipeline" class="diagram">
+    <p>
+      Our technology pipeline turns scattered data into clear, usable insights:
+    </p>
+    <ol>
+      <li><strong>Data Collection:</strong> Crawling government websites, emergency plans, and open data portals.</li>
+      <li><strong>NLP & AI:</strong> Extracting information on agencies, services, and locations from dense documents.</li>
+      <li><strong>Knowledge Graph:</strong> Storing data as relationships in a graph database, enabling searches like:
+        <ul>
+          <li>“Who operates cooling centers in my county?”</li>
+          <li>“Which agencies coordinate flood relief in my neighborhood?”</li>
+        </ul>
+      </li>
+      <li><strong>Visualization:</strong> Displaying connections as network maps and GIS maps for intuitive exploration.</li>
+      <li><strong>User Interface:</strong> Translating jargon into plain language, with plans for multilingual support.</li>
+    </ol>
+  </section>
 
-  <h2>🎯 Who We Serve</h2>
+  <section>
+    <h2>💡 Why DisasterConnect is Different</h2>
+    <ul>
+      <li>Not just a directory—it maps <strong>relationships</strong> and coordination paths.</li>
+      <li>Transforms thousands of hidden documents into one intuitive, accessible platform.</li>
+      <li>Built with a focus on equity, prioritizing marginalized communities.</li>
+      <li>Uses advanced AI and network science to uncover connections invisible to individuals navigating systems alone.</li>
+    </ul>
+  </section>
 
-  <p>
-    DisasterConnect is built for <strong>any community facing a double burden</strong>: high climate risks and social or economic vulnerability. This includes neighborhoods dealing with:
-  </p>
-  <ul>
-    <li>Low income and limited resources to prepare or recover from disasters</li>
-    <li>Language barriers and digital literacy gaps</li>
-    <li>Historic underinvestment in infrastructure and emergency services</li>
-    <li>Housing and energy insecurity</li>
-  </ul>
+  <section>
+    <h2>🌎 My Story</h2>
+    <p>
+      My name is Shambhavi Giri. I grew up in Nepal, one of the world’s least developed countries, where I learned early how poverty, uncertainty, and climate change shape daily life. I worked long hours to afford basic needs and education while witnessing landslides, floods, and shifting monsoons. It felt deeply unfair that communities contributing almost nothing to global emissions bore the greatest consequences.
+    </p>
+    <p>
+      Education became my mission. Driven to create change, I earned scholarships and crossed continents to study urban resilience and climate impacts at Georgia State University. But even here, I’ve found the same injustices repeating: vulnerable communities, often low-income, minority, or immigrant, living on the frontlines of climate risks—yet cut off from critical information and support when disaster strikes.
+    </p>
+    <p>
+      I’ve seen it in Georgia: neighborhoods where heatwaves force families to choose between paying utility bills or protecting their health… renters whose homes flood because they can’t afford to leave… communities speaking languages no one in emergency management seems prepared to understand. Even my university sits in an area identified as disadvantaged due to historic underinvestment and social vulnerability.
+    </p>
+    <p>
+      DisasterConnect is my response. It’s my mission to ensure people everywhere—whether in Nepal, Georgia, or anywhere—never face disaster alone simply because systems are too complex or inaccessible. I believe information isn’t a privilege; it’s a human right, especially during crises.
+    </p>
+  </section>
 
-  <p>
-    While our <strong>pilot project begins in Georgia</strong> — where we live and study — DisasterConnect is designed to serve <strong>vulnerable communities anywhere in the U.S. or globally</strong>. Our goal is universal: to ensure that no one, anywhere, faces a disaster alone simply because they don’t know who to turn to for help.
-  </p>
+  <section>
+    <h2>🚀 Current Status</h2>
+    <p>
+      DisasterConnect is currently in early development. We’re actively working on our prototype and seeking partners, technical collaborators, and funding to pilot our platform in Georgia. Our goal is to create a model scalable worldwide, ensuring equitable disaster resilience for all communities.
+    </p>
+  </section>
 
-  <h2>🌐 How DisasterConnect Works</h2>
+  <section>
+    <h2>📫 Contact</h2>
+    <p>
+      Interested in partnering, collaborating, or learning more? Reach out:
+    </p>
+    <ul>
+      <li>Email: alwaysshambhavi@gmail.com</li>
+      <li>GitHub: <a href="https://github.com/alwaysshambhavi" target="_blank">https://github.com/alwaysshambhavi</a></li>
+    </ul>
+  </section>
 
-  <p>
-    DisasterConnect is <strong>not just a document repository.</strong> It’s a powerful AI-driven network analysis and mapping platform inspired by tools like <strong>Kumu</strong> for social network analysis and advanced GIS systems used in urban planning. Our goal is to transform fragmented disaster response information into an interactive, accessible, and plain-language platform that anyone can use.
-  </p>
+  <footer>
+    &copy; 2025 DisasterConnect. All rights reserved.
+  </footer>
 
-  <p>
-    Instead of forcing residents to dig through dozens of government websites or lengthy PDFs, DisasterConnect creates an intuitive map showing:
-  </p>
-  <ul>
-    <li>Which agencies and organizations are responsible for specific disaster services</li>
-    <li>How different agencies connect and coordinate</li>
-    <li>Where critical resources like cooling centers, shelters, and relief services are physically located</li>
-  </ul>
+  <script>
+    window.addEventListener('scroll', function() {
+      document.querySelectorAll('section').forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+          section.classList.add('visible');
+        }
+      });
+    });
 
-  <p>
-    We’re building DisasterConnect to bridge the gap between <strong>technical government data and the real-life questions people have in emergencies:</strong> Who can help me right now? How do I contact them? What resources are available in my neighborhood?
-  </p>
+    // Simple particles animation
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
 
-  <h2>🔗 Our Data Pipeline</h2>
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
 
-  <p>
-    DisasterConnect’s technology pipeline includes:
-  </p>
+    for (let i = 0; i < 80; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 2 + 1,
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5
+      });
+    }
 
-  <ol>
-    <li><strong>Data Collection:</strong> We automatically crawl official government websites, emergency plans, policy documents, and open data portals from agencies like FEMA, NOAA, and local governments.</li>
-    <li><strong>AI/NLP Analysis:</strong> We use Natural Language Processing (NLP) to extract critical details from complex documents, identifying:
-      <ul>
-        <li>Agency names and roles</li>
-        <li>Types of services offered (e.g. cooling centers, shelters, flood relief)</li>
-        <li>Geographic areas of responsibility</li>
-      </ul>
-    </li>
-    <li><strong>Knowledge Graph:</strong> We store this data in a graph database that captures relationships between agencies, services, and locations. This allows for powerful, question-based searches like:
-      <ul>
-        <li>“Who operates cooling centers in my county?”</li>
-        <li>“Which agencies coordinate flood relief in my neighborhood?”</li>
-      </ul>
-    </li>
-    <li><strong>Interactive Visualization:</strong> We transform these connections into:
-      <ul>
-        <li>Network maps showing relationships between actors (like social network diagrams)</li>
-        <li>GIS maps pinpointing critical infrastructure and services</li>
-      </ul>
-    </li>
-    <li><strong>User-Centric Interface:</strong> We translate complex jargon into clear, plain-language insights, with future plans for multilingual support to reach diverse communities.</li>
-  </ol>
-
-  <h2>💡 Why DisasterConnect is Different</h2>
-
-  <ul>
-    <li>It’s not just a directory — it’s a network analysis tool revealing <strong>how agencies and services connect</strong>.</li>
-    <li>It turns thousands of hidden government documents into a single, searchable, user-friendly map.</li>
-    <li>It’s built from the ground up for <strong>equity and climate resilience</strong>, prioritizing marginalized and vulnerable communities.</li>
-    <li>It uses advanced AI and network science to uncover insights impossible for individuals to piece together manually.</li>
-  </ul>
-
-  <h2>🌎 My Story</h2>
-
-  <p>
-    My name is [Your Name]. I grew up in Nepal, one of the world’s least developed countries, working overtime to afford basic needs and scholarships while witnessing climate disasters that our country did almost nothing to cause. Seeking solutions, I came to the U.S. on scholarship to study urban resilience at Georgia State University.
-  </p>
-
-  <p>
-    But here, too, I found communities facing the same double burden: high climate risks and systemic social disadvantage. I’ve seen neighborhoods in Georgia where heatwaves force families to choose between health and paying utility bills, where renters lose homes to floods, and where language barriers leave people isolated in crises.
-  </p>
-
-  <p>
-    DisasterConnect is my response to these injustices. It’s my mission to ensure that people everywhere — in Nepal, Georgia, or anywhere — never stand alone in a disaster simply because they don’t know who can help. I believe information is not a privilege — it’s a human right, especially in times of crisis.
-  </p>
-
-  <h2>🚀 Current Status</h2>
-
-  <p>
-    DisasterConnect is currently in its early development phase. We’re working on our first prototype and seeking partners, technical collaborators, and funding to pilot our platform in Georgia as a model for communities everywhere.
-  </p>
-
-  <h2>📫 Contact</h2>
-
-  <p>
-    Interested in partnering, collaborating, or learning more? Reach out:
-  </p>
-
-  <ul>
-    <li>Email: [Your Email Address]</li>
-    <li>GitHub: <a href="https://github.com/yourusername" target="_blank">https://github.com/yourusername</a></li>
-  </ul>
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(201, 0, 47, 0.3)';
+        ctx.fill();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
 
 </body>
 </html>
+
