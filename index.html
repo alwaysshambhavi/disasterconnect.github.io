@@ -115,6 +115,44 @@
       color: #666;
       margin-top: 8px;
     }
+    .pipeline-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .pipeline-step {
+      background: #a3e4db;
+      color: #0b1d3a;
+      padding: 20px;
+      border-radius: 10px;
+      width: 200px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transform: scale(0.8);
+      opacity: 0;
+      transition: all 0.8s ease;
+    }
+    .pipeline-step.visible {
+      transform: scale(1);
+      opacity: 1;
+    }
+    .pipeline-step.final {
+      background: #0b1d3a;
+      color: #ffffff;
+    }
+    .pipeline-arrow {
+      font-size: 2em;
+      color: #ffffff;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.8s ease;
+    }
+    .pipeline-arrow.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
@@ -172,35 +210,36 @@
     </p>
   </section>
 
-<section>
-  <h2>🔗 Our Data Pipeline</h2>
-  <div class="flow-chart">
-    <div class="step">1. Data Collection
-      <div class="desc">Scraping websites, emergency plans, open data portals</div>
-    </div>
-    <div class="arrow">→</div>
-    <div class="step">2. NLP & AI
-      <div class="desc">Extracting agencies, services, locations from text</div>
-    </div>
-    <div class="arrow">→</div>
-    <div class="step">3. Knowledge Graph
-      <div class="desc">Building relationships for smart searching & discovery</div>
-    </div>
-    <div class="arrow">→</div>
-    <div class="step">4. Visualization
-      <div class="desc">Creating interactive network & GIS maps</div>
-    </div>
-    <div class="arrow">→</div>
-    <div class="step">5. User Interface
-      <div class="desc">Showing info in plain language, multi-lingual support</div>
-    </div>
-    <div class="arrow">→</div>
-    <div class="step final"> Final Product
-      <div class="desc">A simple, user-friendly platform showing who does what in disasters—so no one is left alone.</div>
-    </div>
-  </div>
-</section>
+  <section>
+    <h2>🔗 Our Data Pipeline</h2>
 
+    <div class="pipeline-container">
+      <div class="pipeline-step">
+        <h3>1. Data Collection</h3>
+        <p>Scraping websites, emergency plans, open data portals.</p>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">
+        <h3>2. NLP & AI</h3>
+        <p>Extracting agencies, services, locations from text.</p>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">
+        <h3>3. Knowledge Graph</h3>
+        <p>Building relationships for smart searching & discovery.</p>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">
+        <h3>4. Visualization</h3>
+        <p>Creating interactive network & GIS maps.</p>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step final">
+        <h3>🎯 Final Product</h3>
+        <p>A simple, user-friendly platform showing who does what in disasters—so no one is left alone.</p>
+      </div>
+    </div>
+  </section>
 
   <section>
     <h2>💡 Why DisasterConnect is Different</h2>
@@ -214,6 +253,7 @@
 
   <section>
     <h2>🌎 My Story</h2>
+
     <p>
       My name is Shambhavi Giri. I grew up in Nepal, one of the world’s least developed countries, where I learned early how poverty, uncertainty, and climate change shape daily life. I worked long hours to afford basic needs and education while witnessing landslides, floods, and shifting monsoons. It felt deeply unfair that communities contributing almost nothing to global emissions bore the greatest consequences.
     </p>
@@ -277,6 +317,19 @@
       block.classList.add('visible');
     });
 
+    // Animate pipeline steps
+    const steps = document.querySelectorAll('.pipeline-step');
+    const arrows = document.querySelectorAll('.pipeline-arrow');
+
+    steps.forEach((step, i) => {
+      setTimeout(() => {
+        step.classList.add('visible');
+        if (arrows[i]) {
+          arrows[i].classList.add('visible');
+        }
+      }, i * 800);
+    });
+
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -317,4 +370,5 @@
 
 </body>
 </html>
+
 
