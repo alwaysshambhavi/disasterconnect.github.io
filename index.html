@@ -86,6 +86,35 @@
       color: #ccc;
       margin: 30px;
     }
+    .photo-block {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .photo-block img {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 10px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 1.2s ease-out;
+    }
+    .photo-block.fade-in.visible img {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .photo-block.slide-in img {
+      transform: translateX(-50px);
+    }
+    .photo-block.slide-in.visible img {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .photo-caption {
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 8px;
+    }
   </style>
 </head>
 <body>
@@ -143,25 +172,35 @@
     </p>
   </section>
 
-  <section>
-    <h2>🔗 Our Data Pipeline</h2>
-    <img src="pipeline-diagram.png" alt="DisasterConnect Data Pipeline" class="diagram">
-    <p>
-      Our technology pipeline turns scattered data into clear, usable insights:
-    </p>
-    <ol>
-      <li><strong>Data Collection:</strong> Crawling government websites, emergency plans, and open data portals.</li>
-      <li><strong>NLP & AI:</strong> Extracting information on agencies, services, and locations from dense documents.</li>
-      <li><strong>Knowledge Graph:</strong> Storing data as relationships in a graph database, enabling searches like:
-        <ul>
-          <li>“Who operates cooling centers in my county?”</li>
-          <li>“Which agencies coordinate flood relief in my neighborhood?”</li>
-        </ul>
-      </li>
-      <li><strong>Visualization:</strong> Displaying connections as network maps and GIS maps for intuitive exploration.</li>
-      <li><strong>User Interface:</strong> Translating jargon into plain language, with plans for multilingual support.</li>
-    </ol>
-  </section>
+<section>
+  <h2>🔗 Our Data Pipeline</h2>
+  <div class="flow-chart">
+    <div class="step">1. Data Collection
+      <div class="desc">Scraping websites, emergency plans, open data portals</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">2. NLP & AI
+      <div class="desc">Extracting agencies, services, locations from text</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">3. Knowledge Graph
+      <div class="desc">Building relationships for smart searching & discovery</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">4. Visualization
+      <div class="desc">Creating interactive network & GIS maps</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">5. User Interface
+      <div class="desc">Showing info in plain language, multi-lingual support</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step final"> Final Product
+      <div class="desc">A simple, user-friendly platform showing who does what in disasters—so no one is left alone.</div>
+    </div>
+  </div>
+</section>
+
 
   <section>
     <h2>💡 Why DisasterConnect is Different</h2>
@@ -178,9 +217,27 @@
     <p>
       My name is Shambhavi Giri. I grew up in Nepal, one of the world’s least developed countries, where I learned early how poverty, uncertainty, and climate change shape daily life. I worked long hours to afford basic needs and education while witnessing landslides, floods, and shifting monsoons. It felt deeply unfair that communities contributing almost nothing to global emissions bore the greatest consequences.
     </p>
+
+    <div class="photo-block fade-in">
+      <img src="flood-nepal-un.jpg" alt="Flooding in Nepal">
+      <p class="photo-caption">
+        Flooding in Nepal devastates entire communities. Photo credit: UN News, from
+        <a href="https://news.un.org/en/story/2024/10/1155246" target="_blank">this article</a>.
+      </p>
+    </div>
+
     <p>
       Education became my mission. Driven to create change, I earned scholarships and crossed continents to study urban resilience and climate impacts at Georgia State University. But even here, I’ve found the same injustices repeating: vulnerable communities, often low-income, minority, or immigrant, living on the frontlines of climate risks—yet cut off from critical information and support when disaster strikes.
     </p>
+
+    <div class="photo-block slide-in">
+      <img src="nepal-clean-air-worldbank.webp" alt="Mother and child wearing masks in Kathmandu">
+      <p class="photo-caption">
+        Air pollution adds another burden for Nepali families. Photo credit: World Bank, from
+        <a href="https://blogs.worldbank.org/en/endpovertyinsouthasia/charting-course-clean-air-nepal" target="_blank">this article</a>. Licensed under CC BY 4.0.
+      </p>
+    </div>
+
     <p>
       I’ve seen it in Georgia: neighborhoods where heatwaves force families to choose between paying utility bills or protecting their health… renters whose homes flood because they can’t afford to leave… communities speaking languages no one in emergency management seems prepared to understand. Even my university sits in an area identified as disadvantaged due to historic underinvestment and social vulnerability.
     </p>
@@ -212,12 +269,14 @@
   </footer>
 
   <script>
-    // Show all sections immediately
     document.querySelectorAll('section').forEach(section => {
       section.classList.add('visible');
     });
 
-    // Particles animation
+    document.querySelectorAll('.photo-block').forEach(block => {
+      block.classList.add('visible');
+    });
+
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
     let particles = [];
