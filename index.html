@@ -11,6 +11,8 @@
       height: 100%;
       overflow-x: hidden;
       font-family: "Helvetica Neue", sans-serif;
+      background: #0b1d3a;
+      color: #f0f0f0;
     }
     canvas#particles {
       position: fixed;
@@ -21,8 +23,8 @@
       height: 100%;
     }
     header {
-      background: rgba(201, 0, 47, 0.85);
-      color: white;
+      background: rgba(11, 29, 58, 0.85);
+      color: #ffffff;
       padding: 50px 20px;
       text-align: center;
     }
@@ -30,19 +32,21 @@
       margin: 0;
       font-size: 3em;
       letter-spacing: 1px;
+      color: #a3e4db;
     }
     header p {
       margin: 15px 0 0;
       font-size: 1.3em;
-      color: #ffe5eb;
+      color: #d1f0ed;
     }
     section {
       background: rgba(255, 255, 255, 0.95);
+      color: #333;
       max-width: 900px;
       margin: 40px auto;
       padding: 40px;
       border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 1s ease-out, transform 1s ease-out;
@@ -52,7 +56,7 @@
       transform: translateY(0);
     }
     h2 {
-      color: #c9002f;
+      color: #0b1d3a;
       margin-top: 0;
       font-size: 2em;
     }
@@ -63,7 +67,7 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.15);
     }
     a {
-      color: #c9002f;
+      color: #0b1d3a;
       text-decoration: none;
       font-weight: bold;
     }
@@ -79,7 +83,7 @@
     footer {
       text-align: center;
       font-size: 0.9em;
-      color: #888;
+      color: #ccc;
       margin: 30px;
     }
   </style>
@@ -208,16 +212,12 @@
   </footer>
 
   <script>
-    window.addEventListener('scroll', function() {
-      document.querySelectorAll('section').forEach(section => {
-        const top = section.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
-          section.classList.add('visible');
-        }
-      });
+    // Show all sections immediately
+    document.querySelectorAll('section').forEach(section => {
+      section.classList.add('visible');
     });
 
-    // Simple particles animation
+    // Particles animation
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -248,7 +248,7 @@
         if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(201, 0, 47, 0.3)';
+        ctx.fillStyle = 'rgba(163, 228, 219, 0.3)';
         ctx.fill();
       });
       requestAnimationFrame(animate);
